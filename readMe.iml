@@ -1,0 +1,4 @@
+convert string into camelcase challenge.  The program will
+run through the string and print characters to a final string
+builder.  It will locate the dilimiter and capitalize the
+character that comes after that character.
