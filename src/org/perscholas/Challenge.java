@@ -4,42 +4,43 @@ import java.util.Locale;
 
 public class Challenge {
 
-    static String toCamelCase(String s){
+    static String uniqueCharacters(String s) {
 
-        //creating a string builder object to contain the wanted return string
+        //Converts any capital letter into a lowercase letter.  P = p...  p = p
+        String nextIndex = s.toString().toLowerCase();
+
         StringBuilder sb = new StringBuilder();
 
-        //variable will catch when characters are to be capitalized
-        boolean isCapital = false;
+        //Counter is for counting how many instances of a single occurance happen
+        int counter = 0;
 
-        //creating loop to loop through the string
-        for(int i = 0; i < s.length(); i++){
+        //Loop to reference the original string
+        for(int i = 0; i<s.length(); i++){
 
-            //checks if the current character is in a place to be capitalized
-            if(isCapital && Character.isLetter(s.charAt(i))){
+            //Loop to reference where the pointer is
+            for(int j = 0; j < s.length(); j++){
 
-                //stores the capital letter in the string builder
-                sb.append(s.toUpperCase().charAt(i));
-
-                //ensures that the next index will not be capitalized
-                isCapital = false;
-
-
-            }
-            //checks to see if the character is to be printed
-            else if(Character.isLetter(s.charAt(i)) && !isCapital){
-                sb.append(s.charAt(i));
-
-            }
-            //checks to see if it is a character separater, next character will be uppercase
-            else if(!Character.isLetter(s.charAt(i))){
-                isCapital=true;
+                //Compares if the pointer matches any characters in the original string, including itself
+                if(nextIndex.charAt(i)==nextIndex.charAt(j)){
+                    counter += 1;
+                }
             }
 
+            //Each character read is counted at least one time
+            if(counter == 1){
+                sb.append("(");
+
+                //any character that exists more than once will have a count of greater than or equal to 2
+            }else if(counter >= 2){
+                sb.append(")");
+            }
+
+            //counter is reset before moving the index in the original string
+            counter = 0;
         }
-        System.out.println(sb.toString());
 
-        //returns result
+
         return sb.toString();
+
     }
 }

@@ -4,7 +4,7 @@ public class MainRunner {
     public static void main(String[] args) {
 
         Challenge challenge = new Challenge();
-        challenge.toCamelCase("the)stealth#warrior");
+        challenge.uniqueCharacters("Prespecialized");
 
         System.out.println("you got this my g");
     }
